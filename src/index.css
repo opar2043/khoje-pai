@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-col{
+    color: #4caf50
+}
+.bg-col{
+    background-color: #4caf50;
+}

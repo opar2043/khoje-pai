@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Food & Restaurants",
+    "icon": "🍔"
+  },
+  {
+    "name": "Doctors & Health Care",
+    "icon": "🩺"
+  },
+  {
+    "name": "Education & Coaching",
+    "icon": "📚"
+  },
+  {
+    "name": "Real Estate & Property",
+    "icon": "🏠"
+  },
+  {
+    "name": "Technology & Gadgets",
+    "icon": "💻"
+  },
+  {
+    "name": "Fashion & Clothing",
+    "icon": "👗"
+  },
+  {
+    "name": "Automobiles & Mechanics",
+    "icon": "🚗"
+  },
+  {
+    "name": "Beauty & Wellness",
+    "icon": "💅"
+  },
+  {
+    "name": "Home Services",
+    "icon": "🛠️"
+  },
+  {
+    "name": "Travel & Tourism",
+    "icon": "✈️"
+  }
+]
