@@ -10,6 +10,9 @@ import {
   QueryClientProvider,  
 } from '@tanstack/react-query'
 import Root from './Component/Root/Root.jsx';
+import Login from './Component/Firebase/Login.jsx';
+import Register from './Component/Firebase/REgister.jsx';
+import Advertise from './Component/Dashboard/Advertise/Advertise.jsx';
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -22,6 +25,14 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home></Home>
       },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      },
     ]
   },
 {
@@ -29,8 +40,8 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
     {
-      path: "/dashboard",
-      element: <Dashboard></Dashboard>
+      path: "/dashboard/advertise",
+      element: <Advertise></Advertise>
     }
   ]
   }
