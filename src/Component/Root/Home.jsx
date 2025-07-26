@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Title from "../Shared/Title";
+import Stall from "../Stall/Stall";
 
 const Home = () => {
   const [category, setCategory] = useState([]);
@@ -45,6 +47,7 @@ const Home = () => {
             ))}
         </div>
       </div>
+      <Stall></Stall>
     </div>
   );
 };

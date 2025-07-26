@@ -1,24 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { AiOutlineHome } from 'react-icons/ai';
+
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Error = () => {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-100 to-green-300 text-center p-6">
-      <h1 className="text-6xl font-extrabold text-green-700 mb-4">404</h1>
-      <p className="text-2xl font-semibold text-gray-800 mb-2">Oops! Page not found.</p>
-      <p className="text-gray-600 mb-6">
-        The page you’re looking for doesn’t exist or has been moved.
-      </p>
-      <Link
-        to="/"
-        className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md shadow-md transition duration-300"
-      >
-        <AiOutlineHome size={20} />
-        Go Back Home
-      </Link>
-    </div>
-  );
+
+    return (
+        <div className="boxShadow px-10 w-full lg:flex-row gap-[30px] lg:gap-0 flex-col flex items-center justify-evenly py-20 rounded-xl">
+
+            <div className="w-[80%] lg:w-[40%]">
+                <img src="https://i.ibb.co/HdHH4Pb/Frame-6.png" alt="illustration"
+                     className="w-full"/>
+            </div>
+
+            <div className="w-full lg:w-[30%] text-center lg:text-start">
+                <h1 className="text-[2.5rem] dark:text-{#abc2d3] sm:text-[4rem] font-[800] text-[#566FA7] leading-[80px]">OOPS!</h1>
+
+                <h3 className="text-[#8093B8] dark:text-slate-400 text-[0.9rem] sm:text-[1.2rem]">Looks like big foot has broken the link</h3>
+                 <Link to={'/'}>
+                    
+                <button className="py-3 px-6 sm:px-8 text-[0.9rem] sm:text-[1rem] rounded-full bg-[#566FA7] text-white mt-8">Back to
+                    homepage
+                </button>
+                 </Link>
+            </div>
+        </div>
+    );
 };
 
 export default Error;
+                    
