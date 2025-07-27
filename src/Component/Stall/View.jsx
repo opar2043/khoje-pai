@@ -61,7 +61,7 @@ const View = () => {
 
   return (
     <div className="mx-auto md:px-8 md:py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 shadow-md">
+      <div className="p-3 rounded-md grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 shadow-md">
         {/* Image Section */}
         <div className="space-y-4 relative group">
           {/* Image container */}

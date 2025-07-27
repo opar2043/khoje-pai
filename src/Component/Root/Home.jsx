@@ -17,7 +17,7 @@ const Home = () => {
           Emergency
         </button>
       </div>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="md:flex md:flex-wrap grid grid-cols-2 justify-center  gap-2">
         {category &&
           category.map((cat) => (
             <button
@@ -35,7 +35,7 @@ const Home = () => {
             Emergency People
           </button>
         </div>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="md:flex md:flex-wrap grid grid-cols-2 justify-center  gap-2">
           {category &&
             category.map((cat) => (
               <button

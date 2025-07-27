@@ -25,9 +25,9 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-white shadow-md px-4 md:px-12 py-3 w-full">
+    <div className=" bg-white shadow-md px-4 md:px-12 py-3 w-full">
       {/* ✅ Top row: Logo + Mobile Menu (Mobile only) */}
-      <div className="flex items-center justify-between md:hidden w-full border">
+      <div className="flex items-center justify-between md:hidden w-full ">
         {/* Logo */}
        
         <Link to="/">
@@ -54,12 +54,12 @@ const Navbar = () => {
       </div>
 
       {/* ✅ Mobile: Search Bar full width below */}
-      <div className="md:hidden mt-3">
-        <div className="flex items-center border-2 border-green-500 rounded-lg bg-white px-3">
+      <div className="md:hidden mt-4 mb-2">
+        <div className="flex items-center border-2 border-green-500 rounded-lg bg-white px-3 ">
           <input
             type="text"
             placeholder="Search Your Store"
-            className="flex-grow py-2 text-sm outline-none"
+            className="flex-grow py-3 text-sm outline-none"
           />
           <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded px-3 py-2 text-xl">
             <FaSearch />
@@ -71,18 +71,18 @@ const Navbar = () => {
       <div className="hidden md:flex items-center justify-end gap-6 mt-2">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
-          <img src={img} alt="Khoje Pai Logo" className="w-48" />
+          <img src={img} alt="Khoje Pai Logo" className="w-60" />
         </Link>
 
         {/* Search bar */}
         <div className="flex flex-grow justify-end">
-          <div className="flex items-center border-2 border-green-500 rounded-lg bg-white w-full max-w-lg px-1">
+          <div className="flex items-center border-2 border-green-500 rounded-lg bg-white w-full max-w-xl px-1">
             <input
               type="text"
               placeholder="Search Your Store"
               className="flex-grow py-3 px-2 text-sm outline-none"
             />
-            <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded px-2 py-2 text-xl">
+            <button className="text-white bg-gradient-to-r from-green-400 to-green-500 rounded px-4 py-2 text-xl">
               <FaSearch />
             </button>
           </div>
@@ -93,10 +93,11 @@ const Navbar = () => {
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle avatar"
+            className="btn w-14 btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
+            <div className="w-full rounded-full">
               <img
+              className="w-full"
                 alt="User Avatar"
                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
               />
@@ -104,7 +105,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-1 z-[1] p-2 shadow bg-white rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-1 z-[1] p-2 shadow bg-white rounded-box w-60 border"
           >
             {link}
           </ul>
