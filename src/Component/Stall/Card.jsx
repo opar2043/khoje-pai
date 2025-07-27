@@ -2,7 +2,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineTimer } from "react-icons/md";
 import { FaStore } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const Card = ({ stall }) => {
+const Card = ({ stall , sub}) => {
   const {
     name,
     stallName,
@@ -16,8 +16,9 @@ const Card = ({ stall }) => {
     service,
     _id,
   } = stall;
+    const path = sub ? `/stalls/${sub}/${_id}` : `/stall/${_id}`;
   return (
-    <Link to={`stall/${_id}`}>
+    <Link to={path}>
       <div className="w-full shadow-lg h-[350px] hover:scale-[1.05] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group border border-t">
         {/* Overlay Top */}
         <div className="absolute top-0 left-0 w-full flex justify-between items-center p-4 text-white z-10">

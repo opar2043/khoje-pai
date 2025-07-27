@@ -1,42 +1,17 @@
 [
-  {
-    "name": "Food & Restaurants",
-    "icon": "🍔"
-  },
-  {
-    "name": "Doctors & Health Care",
-    "icon": "🩺"
-  },
-  {
-    "name": "Education & Coaching",
-    "icon": "📚"
-  },
-  {
-    "name": "Real Estate & Property",
-    "icon": "🏠"
-  },
-  {
-    "name": "Technology & Gadgets",
-    "icon": "💻"
-  },
-  {
-    "name": "Fashion & Clothing",
-    "icon": "👗"
-  },
-  {
-    "name": "Automobiles & Mechanics",
-    "icon": "🚗"
-  },
-  {
-    "name": "Beauty & Wellness",
-    "icon": "💅"
-  },
-  {
-    "name": "Home Services",
-    "icon": "🛠️"
-  },
-  {
-    "name": "Travel & Tourism",
-    "icon": "✈️"
-  }
+  { "name": "Grocery", "icon": "🛒" },
+  { "name": "Doctor", "icon": "🩺" },
+  { "name": "Tea Stall", "icon": "🍵" },
+  { "name": "Electrician", "icon": "💡" },
+  { "name": "Mechanic", "icon": "🔧" },
+  { "name": "Education & Coaching", "icon": "📚" },
+  { "name": "Plumber", "icon": "🚰" },
+  { "name": "Snacks", "icon": "🍦" },
+  { "name": "Tailor", "icon": "🧵" },
+  { "name": "Mobile Repair", "icon": "📱" },
+  { "name": "Home Decor", "icon": "🪑" },
+  { "name": "Laundry", "icon": "🧺" },
+  { "name": "Furniture", "icon": "🛋️" },
+  { "name": "Footwear", "icon": "👟" },
+  { "name": "Photography", "icon": "📷" }
 ]

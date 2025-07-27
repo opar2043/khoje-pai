@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Title from "../Shared/Title";
 import Stall from "../Stall/Stall";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [category, setCategory] = useState([]);
@@ -10,6 +10,7 @@ const Home = () => {
       .then((data) => setCategory(data))
       .catch((err) => console.error(err));
   }, []);
+
   return (
     <div>
       <div className="flex justify-start my-7">
@@ -19,13 +20,15 @@ const Home = () => {
       </div>
       <div className="md:flex md:flex-wrap grid grid-cols-2 justify-center  gap-2">
         {category &&
-          category.map((cat) => (
-            <button
-              className="btn  text-gray-700 font-bold bg-gray-200 hover:bg-gray-300  transition-all duration-300"
-              key={cat.id}
-            >
-              {cat.name}
-            </button>
+          category.map((cat, idx) => (
+              <Link to={`/stalls/${cat.name}`}>
+                <button
+                  className="btn  text-gray-700 font-bold bg-gray-200 hover:bg-gray-300  transition-all duration-300"
+                  key={cat.name}
+                >
+                  {cat.name}
+                </button>
+              </Link>
           ))}
       </div>
 
@@ -38,12 +41,14 @@ const Home = () => {
         <div className="md:flex md:flex-wrap grid grid-cols-2 justify-center  gap-2">
           {category &&
             category.map((cat) => (
-              <button
-                className="btn  text-gray-700 font-bold bg-gray-200 hover:bg-gray-300  transition-all duration-300"
-                key={cat.id}
-              >
-                {cat.name}
-              </button>
+              <Link to={`/stalls/${cat.name}`}>
+                <button
+                  className="btn  text-gray-700 font-bold bg-gray-200 hover:bg-gray-300  transition-all duration-300"
+                  key={cat.name}
+                >
+                  {cat.name}
+                </button>
+              </Link>
             ))}
         </div>
       </div>
