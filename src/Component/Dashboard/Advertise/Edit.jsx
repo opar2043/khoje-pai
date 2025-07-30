@@ -1,37 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
+
 const img_api_key =
   "https://api.imgbb.com/1/upload?key=188918a9c4dee4bd0453f7ec15042a27";
-const Advertise = () => {
+
+const Edit = () => {
   const [service, setService] = useState("Fish");
-  const axiosSecure = useAxios()
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const data = e.target;
+  const axiosSecure = useAxios();
+  const { id } = useParams();
+  const [stalls, setStalls] = useState([]);
 
-  const name = data.name.value;
-  const stallName = data.stallName.value;
-  const address = data.address.value;
-  const opening = data.opening.value;
-  const number = data.number.value;
-  const description = data.description.value;
-  const price = data.price.value;
-  const category = data.category.value;
-  const image = data.image.files[0];
+  useEffect(() => {
+    fetch("/stall.json")
+      .then((res) => res.json())
+      .then((data) => setStalls(data))
+      .catch((err) => console.error(err));
+  }, []);
 
-  const formData = new FormData();
-  formData.append("image", image);
+  const findStall = stalls.find((stall) => stall._id === id);
+  const {
+    name,
+    stallName,
+    address,
+    opening,
+    number,
+    description,
+    price,
+    category,
+    image,
+  } = findStall || {};
 
-  fetch(img_api_key, {
-    method: "POST",
-    body: formData,
-  })
-    .then((res) => res.json())
-    .then((imgData) => {
-      console.log("Image uploaded:", imgData);
+  const handleEdit = (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-      const stall = {
+    const name = form.name.value;
+    const stallName = form.stallName.value;
+    const address = form.address.value;
+    const opening = form.opening.value;
+    const number = form.number.value;
+    const description = form.description.value;
+    const price = form.price.value;
+    const category = form.category.value;
+    const newImage = form.image.files[0];
+
+    const updateStall = (imageUrl) => {
+      const stallData = {
         name,
         stallName,
         address,
@@ -40,44 +56,64 @@ const handleSubmit = (e) => {
         description,
         price,
         category,
-        image: imgData.data.url, // Use uploaded image URL
+        image: imageUrl,
         service,
       };
 
       axiosSecure
-        .post("/stalls", stall)
-        .then((res) => {
+        .patch(`/stalls/${id}`, stallData)
+        .then(() => {
           Swal.fire({
-            title: "Stall Added!",
-            text: "Your stall was successfully added.",
+            title: "Stall Updated!",
+            text: "The stall details have been successfully updated.",
             icon: "success",
           });
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
           Swal.fire({
-            title: "Something Went Wrong",
+            title: "Update Failed",
+            text: "Something went wrong while updating.",
             icon: "error",
-            draggable: true,
           });
         });
+    };
 
-      console.log(stall);
-    });
+    if (newImage) {
+      const formData = new FormData();
+      formData.append("image", newImage);
 
-  // data.reset();
-};
-
+      fetch(img_api_key, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((imgData) => {
+          const imageUrl = imgData?.data?.url;
+          updateStall(imageUrl);
+        })
+        .catch((err) => {
+          console.error(err);
+          Swal.fire({
+            title: "Image Upload Failed",
+            text: "Try again later.",
+            icon: "error",
+          });
+        });
+    } else {
+      updateStall(image); // Use existing image if not changed
+    }
+  };
 
   return (
     <div>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center py-10 px-4">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleEdit}
           className="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-xl space-y-6"
         >
           <h2 className="text-3xl font-bold text-center text-blue-700 mb-4">
-            Stall Registration
+            Update Your Stall
           </h2>
 
           {/* Name */}
@@ -88,6 +124,7 @@ const handleSubmit = (e) => {
             <input
               type="text"
               name="name"
+              defaultValue={name}
               required
               placeholder="e.g. Rijoan Rashid"
               className="w-full mt-1 p-3 border border-gray-300 rounded-lg"
@@ -103,6 +140,7 @@ const handleSubmit = (e) => {
               type="text"
               name="stallName"
               required
+              defaultValue={stallName}
               placeholder="e.g. Fresh Mart"
               className="w-full mt-1 p-3 border border-gray-300 rounded-lg"
             />
@@ -117,12 +155,13 @@ const handleSubmit = (e) => {
               type="text"
               name="address"
               required
+              defaultValue={address}
               placeholder="e.g. 123 Market Street, Dhaka"
               className="w-full mt-1 p-3 border border-gray-300 rounded-lg"
             />
           </div>
 
-          {/* Email & Number */}
+          {/* Opening Hour & Number */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <label className="block text-sm font-semibold text-gray-700">
@@ -131,6 +170,7 @@ const handleSubmit = (e) => {
               <input
                 type="text"
                 name="opening"
+                defaultValue={opening}
                 required
                 placeholder="e.g. 8am - 10pm"
                 className="w-full mt-1 p-3 border border-gray-300 rounded-lg"
@@ -143,6 +183,7 @@ const handleSubmit = (e) => {
               <input
                 type="tel"
                 name="number"
+                defaultValue={number}
                 required
                 placeholder="e.g. 017XXXXXXXX"
                 className="w-full mt-1 p-3 border border-gray-300 rounded-lg"
@@ -150,8 +191,8 @@ const handleSubmit = (e) => {
             </div>
           </div>
 
+          {/* Price & Category */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Price */}
             <div>
               <label className="block text-sm font-semibold text-gray-700">
                 Price (Approx.)
@@ -159,19 +200,20 @@ const handleSubmit = (e) => {
               <input
                 type="number"
                 name="price"
+                defaultValue={price}
                 required
                 placeholder="e.g. 500"
                 className="w-full mt-1 p-3 border border-gray-300 rounded-lg"
               />
             </div>
 
-            {/* Category */}
-            <div>
+{    category &&       <div>
               <label className="block text-sm font-semibold text-gray-700">
                 Category
               </label>
               <select
                 name="category"
+                defaultValue={category}
                 required
                 className="w-full mt-1 p-3 border border-gray-300 rounded-lg"
               >
@@ -187,19 +229,18 @@ const handleSubmit = (e) => {
                 <option value="Tailor">Tailor</option>
                 <option value="Mechanic">Mechanic</option>
               </select>
-            </div>
+            </div>}
           </div>
 
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-semibold text-gray-700">
-              Upload Stall Image
+              Upload New Image (optional)
             </label>
             <input
               type="file"
               name="image"
               accept="image/*"
-              required
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
             />
           </div>
@@ -211,6 +252,7 @@ const handleSubmit = (e) => {
             </label>
             <textarea
               name="description"
+              defaultValue={description}
               rows="4"
               required
               placeholder="Write something about your stall or the items you sell..."
@@ -222,9 +264,9 @@ const handleSubmit = (e) => {
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg shadow hover:bg-blue-700 transition"
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold py-3 rounded-lg shadow transition-all duration-300"
             >
-              Register Stall
+              Update Stall
             </button>
           </div>
         </form>
@@ -233,4 +275,4 @@ const handleSubmit = (e) => {
   );
 };
 
-export default Advertise;
+export default Edit;

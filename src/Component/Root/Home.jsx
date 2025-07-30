@@ -18,7 +18,7 @@ const Home = () => {
           Emergency
         </button>
       </div>
-      <div className="md:flex md:flex-wrap grid grid-cols-2 justify-center  gap-2">
+      <div className="md:flex md:flex-wrap flex flex-wrap justify-start gap-2">
         {category &&
           category.map((cat, idx) => (
               <Link to={`/stalls/${cat.name}`}>
@@ -38,7 +38,7 @@ const Home = () => {
             Emergency People
           </button>
         </div>
-        <div className="md:flex md:flex-wrap grid grid-cols-2 justify-center  gap-2">
+        <div className="flex flex-wrap justify-start gap-2">
           {category &&
             category.map((cat) => (
               <Link to={`/stalls/${cat.name}`}>

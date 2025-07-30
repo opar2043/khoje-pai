@@ -17,6 +17,7 @@ import View from './Component/Stall/View.jsx';
 import AllAdvertise from './Component/Dashboard/Advertise/AllAdvertise.jsx';
 import Category from './Component/Stall/Category.jsx';
 import CategoryView from './Component/Stall/CategoryView.jsx';
+import Edit from './Component/Dashboard/Advertise/Edit.jsx';
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
     {
       path: "/dashboard/alladvertise",
       element: <AllAdvertise></AllAdvertise>
+    },
+    {
+      path: "/dashboard/edit/:id",
+      element: <Edit></Edit>
     }
   ]
   }
