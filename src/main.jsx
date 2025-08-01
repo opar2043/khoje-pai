@@ -18,6 +18,7 @@ import AllAdvertise from './Component/Dashboard/Advertise/AllAdvertise.jsx';
 import Category from './Component/Stall/Category.jsx';
 import CategoryView from './Component/Stall/CategoryView.jsx';
 import Edit from './Component/Dashboard/Advertise/Edit.jsx';
+import User from './Component/Dashboard/User/User.jsx';
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
     {
       path: "/dashboard/alladvertise",
       element: <AllAdvertise></AllAdvertise>
+    },
+    {
+      path: "/dashboard/user",
+      element: <User></User>
     },
     {
       path: "/dashboard/edit/:id",

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { FaAd, FaStore, FaListAlt } from "react-icons/fa";
+import { FaAd, FaStore, FaListAlt, FaUser } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 import img from "../../assets/khojepai.png";
 
@@ -39,10 +39,10 @@ const Dashboard = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/all-store"
+              to="/dashboard/user"
               className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-green-600 transition-all"
             >
-              <FaStore size={20} /> <span>All Store</span>
+              <FaUser size={20} /> <span>Registered User</span>
             </Link>
           </li>
           <li>

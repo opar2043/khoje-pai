@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Rijoan Rashid",
+    "stallName": "Rijoan's Fresh Fruits",
+    "role": "Owner"
+  },
+  {
+    "name": "Ishrat Jahan",
+    "stallName": "Ishrat's Book Bazaar",
+    "role": "Manager"
+  },
+  {
+    "name": "Rajib Hasan",
+    "stallName": "Rajib's Electronics",
+    "role": "Cashier"
+  },
+  {
+    "name": "Tania Akter",
+    "stallName": "Tania's Fashion Corner",
+    "role": "Sales Assistant"
+  },
+  {
+    "name": "Sohanur Rahman",
+    "stallName": "Sohan's Tech Hub",
+    "role": "Technician"
+  },
+  {
+    "name": "Fatema Khatun",
+    "stallName": "Fatema's Homemade Delights",
+    "role": "Chef"
+  }
+]
