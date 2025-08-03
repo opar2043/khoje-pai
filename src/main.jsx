@@ -19,6 +19,7 @@ import Category from './Component/Stall/Category.jsx';
 import CategoryView from './Component/Stall/CategoryView.jsx';
 import Edit from './Component/Dashboard/Advertise/Edit.jsx';
 import User from './Component/Dashboard/User/User.jsx';
+import AuthProvider from './Component/Firebase/AuthProvider.jsx';
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -81,7 +82,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
      <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </QueryClientProvider>
   </StrictMode>,
 )

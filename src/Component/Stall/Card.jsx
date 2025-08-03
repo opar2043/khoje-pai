@@ -16,6 +16,7 @@ const Card = ({ stall , sub}) => {
     service,
     _id,
   } = stall;
+  
     const path = sub ? `/stalls/${sub}/${_id}` : `/stall/${_id}`;
   return (
 <Link to={path}>

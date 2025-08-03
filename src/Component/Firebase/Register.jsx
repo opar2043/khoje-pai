@@ -1,11 +1,30 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import registerAnimation from "../../assets/register_animation.json";
 import Lottie from "lottie-react";
+import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const REgister = () => {
 
+  const {handleRegister} = useAuth();
+  const navigate = useNavigate()
+  function handleRegisterEmail(e)
+  {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const pass= e.target.pass.value;
+    const name= e.target.name.value;
 
+    handleRegister(email, pass)
+      .then(() => {
+        Swal.fire({ title: "Registered!", icon: "success" });
+        navigate("/");
+      })
+      .catch(() => {
+        Swal.fire({ title: "Something went wrong", icon: "error" });
+      });
+  }
 
 
   return (
@@ -25,7 +44,7 @@ const REgister = () => {
             Join us and start your journey!
           </p>
 
-          <form onSubmit={''} className="space-y-5">
+          <form onSubmit={handleRegisterEmail} className="space-y-5">
             <input
               type="text"
               name="name"

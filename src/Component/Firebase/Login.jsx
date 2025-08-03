@@ -1,9 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import login_animation from "../../assets/login_animation.json";
+import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const {handleLogin} = useAuth();
+  const navigate = useNavigate()
+  function handleLoginEmail(e)
+  {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const pass= e.target.password.value;
+
+    handleLogin(email, pass)
+      .then(() => {
+        Swal.fire({ title: "Logged In!", icon: "success" });
+        navigate("/");
+      })
+      .catch(() => {
+        Swal.fire({ title: "Something went wrong", icon: "error" });
+      });
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
       <div className="max-w-6xl w-full bg-white rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-6 p-6 md:p-10">
@@ -21,7 +40,7 @@ const Login = () => {
         <div className="flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
 
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+          <form onSubmit={handleLoginEmail} className="space-y-5">
             <div>
               <input
                 type="email"
