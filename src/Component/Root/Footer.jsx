@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex pb-4 flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo and Brand Info */}
           <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left">
-            <img src={img} alt="Khoje Pai Logo" className="w-24 md:w-36" />
+            <img src={img} alt="Khoje Pai Logo" className="w-36 md:w-64" />
             <div>
               <p className="text-sm text-green-600 font-medium">
                 Your Trusted Stall Finder
@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-5 text-2xl">
+          <div className="flex gap-5 text-3xl">
             <Link className="text-blue-600 hover:text-green-800 transition-colors duration-300">
               <FaFacebook />
             </Link>

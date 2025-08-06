@@ -4,9 +4,10 @@ import registerAnimation from "../../assets/register_animation.json";
 import Lottie from "lottie-react";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxios from "../Hooks/useAxios";
 
 const REgister = () => {
-
+ const axiosSecure = useAxios()
   const {handleRegister} = useAuth();
   const navigate = useNavigate()
   function handleRegisterEmail(e)
@@ -16,10 +17,19 @@ const REgister = () => {
     const pass= e.target.pass.value;
     const name= e.target.name.value;
 
+    const userObj = {
+      email,
+      name,
+      pass,
+      role : "stallman"
+    }
+
     handleRegister(email, pass)
-      .then(() => {
-        Swal.fire({ title: "Registered!", icon: "success" });
-        navigate("/");
+      .then((userCredential) => {
+        axiosSecure.post("/users", userObj).then(() => {
+          Swal.fire({ title: "Registered Successfully!", icon: "success" });
+          navigate("/");
+        });
       })
       .catch(() => {
         Swal.fire({ title: "Something went wrong", icon: "error" });
